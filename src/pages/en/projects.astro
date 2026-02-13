@@ -1,0 +1,75 @@
+---
+import Layout from '../../components/Layout.astro';
+import Navbar from '../../components/Navbar.astro';
+import Footer from '../../components/Footer.astro';
+import Card from '../../components/Card.astro';
+import { projects } from '../../data/projects.en';
+---
+
+<Layout
+  title="Projects"
+  description="Technical projects and experiments in web development, security, and automation"
+  locale="en"
+>
+  <Navbar locale="en" currentPath="projects" />
+
+  <main class="min-h-screen">
+    <section class="section-container">
+      <div class="max-w-6xl mx-auto">
+        <div class="mb-12">
+          <h1 class="text-4xl md:text-5xl font-extrabold text-white mb-4">Projects</h1>
+          <p class="text-xl text-dark-muted">
+            A collection of technical projects, experiments, and learning experiences.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {projects.map(project => (
+            <Card>
+              <div class="mb-4">
+                <div class="flex items-start justify-between mb-2">
+                  <h3 class="text-lg font-bold text-white">{project.title}</h3>
+                  {project.link && (
+                    <a
+                      href={project.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="text-accent hover:text-accent-light transition-colors"
+                      aria-label={`Visit ${project.title}`}
+                    >
+                      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                      </svg>
+                    </a>
+                  )}
+                </div>
+                <p class="text-sm text-dark-muted">{project.description}</p>
+              </div>
+
+              <div class="flex flex-wrap gap-2 mb-4">
+                {project.tags.map(tag => (
+                  <span class="px-3 py-1 text-xs bg-accent/10 text-accent rounded-full">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+
+              <div class="flex items-center justify-between">
+                <span class={`text-xs px-3 py-1 rounded-full ${
+                  project.status === 'Active' ? 'bg-green-500/10 text-green-400' :
+                  project.status === 'In Progress' ? 'bg-blue-500/10 text-blue-400' :
+                  project.status === 'Completed' ? 'bg-purple-500/10 text-purple-400' :
+                  'bg-gray-500/10 text-gray-400'
+                }`}>
+                  {project.status}
+                </span>
+              </div>
+            </Card>
+          ))}
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer locale="en" />
+</Layout>

@@ -1,0 +1,58 @@
+---
+interface Props {
+  locale: 'en' | 'ru';
+}
+
+const { locale } = Astro.props;
+---
+
+<div class="flex items-center gap-1 text-sm">
+  <button
+    data-lang="en"
+    class={`px-3 py-1 rounded transition-colors ${locale === 'en' ? 'bg-accent text-white' : 'text-dark-muted hover:text-dark-text'}`}
+  >
+    EN
+  </button>
+  <span class="text-dark-muted">|</span>
+  <button
+    data-lang="ru"
+    class={`px-3 py-1 rounded transition-colors ${locale === 'ru' ? 'bg-accent text-white' : 'text-dark-muted hover:text-dark-text'}`}
+  >
+    RU
+  </button>
+</div>
+
+<script>
+  // Language switcher with localStorage persistence
+  function initLangSwitch() {
+    const buttons = document.querySelectorAll('[data-lang]');
+    const currentPath = window.location.pathname;
+    const currentLocale = currentPath.startsWith('/ru') ? 'ru' : 'en';
+
+    // Check localStorage on load
+    const storedLocale = localStorage.getItem('preferred-locale');
+    if (storedLocale && storedLocale !== currentLocale) {
+      const pathWithoutLocale = currentPath.replace(/^\/(en|ru)/, '');
+      window.location.pathname = `/${storedLocale}${pathWithoutLocale || ''}`;
+      return;
+    }
+
+    // Add click handlers
+    buttons.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const targetLang = btn.getAttribute('data-lang');
+        if (targetLang && targetLang !== currentLocale) {
+          localStorage.setItem('preferred-locale', targetLang);
+          const pathWithoutLocale = currentPath.replace(/^\/(en|ru)/, '');
+          window.location.pathname = `/${targetLang}${pathWithoutLocale || ''}`;
+        }
+      });
+    });
+  }
+
+  // Run on page load
+  initLangSwitch();
+
+  // Re-run after navigation (for SPA-like behavior if needed)
+  document.addEventListener('astro:page-load', initLangSwitch);
+</script>

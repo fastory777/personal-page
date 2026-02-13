@@ -1,0 +1,185 @@
+---
+import Layout from '../../components/Layout.astro';
+import Navbar from '../../components/Navbar.astro';
+import Footer from '../../components/Footer.astro';
+import Card from '../../components/Card.astro';
+---
+
+<Layout
+  title="Обо мне"
+  description="Биография, технические навыки и области интересов"
+  locale="ru"
+>
+  <Navbar locale="ru" currentPath="about" />
+
+  <main class="min-h-screen">
+    <section class="section-container">
+      <div class="max-w-4xl mx-auto">
+        <h1 class="text-4xl md:text-5xl font-extrabold text-white mb-8">Обо мне</h1>
+
+        <!-- Bio -->
+        <div class="mb-12">
+          <Card>
+            <h2 class="text-2xl font-bold text-white mb-4">Биография</h2>
+            <div class="space-y-4 text-dark-text">
+              <p>
+                Родом из Украины, сейчас живу в Норвегии и получаю IT-образование, работая в компании-разработчике ПО.
+              </p>
+              <p>
+                Основной фокус — программирование и создание практичных систем, решающих реальные задачи. Ценю практический опыт и предпочитаю учиться через реализацию, а не только через теорию.
+              </p>
+            </div>
+          </Card>
+        </div>
+
+        <!-- Technical Stack -->
+        <div class="mb-12">
+          <h2 class="text-2xl font-bold text-white mb-6">Технический стек</h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <Card>
+              <h3 class="text-lg font-semibold text-white mb-4">Языки и фреймворки</h3>
+              <ul class="space-y-2 text-sm text-dark-text">
+                <li class="flex items-center gap-2">
+                  <span class="text-accent">▸</span>
+                  JavaScript / TypeScript
+                </li>
+                <li class="flex items-center gap-2">
+                  <span class="text-accent">▸</span>
+                  Python
+                </li>
+                <li class="flex items-center gap-2">
+                  <span class="text-accent">▸</span>
+                  HTML / CSS
+                </li>
+                <li class="flex items-center gap-2">
+                  <span class="text-accent">▸</span>
+                  React
+                </li>
+                <li class="flex items-center gap-2">
+                  <span class="text-accent">▸</span>
+                  Vue 3
+                </li>
+                <li class="flex items-center gap-2">
+                  <span class="text-accent">▸</span>
+                  PHP
+                </li>
+                <li class="flex items-center gap-2">
+                  <span class="text-accent">▸</span>
+                  Laravel
+                </li>
+                <li class="flex items-center gap-2">
+                  <span class="text-accent">▸</span>
+                  NestJS
+                </li>
+                <li class="flex items-center gap-2">
+                  <span class="text-accent">▸</span>
+                  Node.js
+                </li>
+                <li class="flex items-center gap-2">
+                  <span class="text-accent">▸</span>
+                  SQL
+                </li>
+              </ul>
+            </Card>
+
+            <Card>
+              <h3 class="text-lg font-semibold text-white mb-4">Инструменты и технологии</h3>
+              <ul class="space-y-2 text-sm text-dark-text">
+                <li class="flex items-center gap-2">
+                  <span class="text-accent">▸</span>
+                  Git / GitHub
+                </li>
+                <li class="flex items-center gap-2">
+                  <span class="text-accent">▸</span>
+                  PowerShell и Bash
+                </li>
+                <li class="flex items-center gap-2">
+                  <span class="text-accent">▸</span>
+                  Windows Server
+                </li>
+                <li class="flex items-center gap-2">
+                  <span class="text-accent">▸</span>
+                  Active Directory
+                </li>
+                <li class="flex items-center gap-2">
+                  <span class="text-accent">▸</span>
+                  Основы Linux
+                </li>
+                <li class="flex items-center gap-2">
+                  <span class="text-accent">▸</span>
+                  Интеграция ИИ для продуктивности и рабочих процессов разработки
+                </li>
+              </ul>
+            </Card>
+
+            <Card>
+              <h3 class="text-lg font-semibold text-white mb-4">Области практики</h3>
+              <ul class="space-y-2 text-sm text-dark-text">
+                <li class="flex items-center gap-2">
+                  <span class="text-accent">▸</span>
+                  Веб-разработка
+                </li>
+                <li class="flex items-center gap-2">
+                  <span class="text-accent">▸</span>
+                  Автоматизация через скрипты
+                </li>
+                <li class="flex items-center gap-2">
+                  <span class="text-accent">▸</span>
+                  Серверные окружения и Active Directory
+                </li>
+              </ul>
+            </Card>
+
+            <Card>
+              <h3 class="text-lg font-semibold text-white mb-4">Сейчас изучаю</h3>
+              <div class="space-y-4 text-sm text-dark-text">
+                <p>
+                  Всё перечисленное выше — часть постоянного обучения. Не позиционирую себя как эксперта, а как человека, нацеленного на непрерывный рост.
+                </p>
+                <p class="font-semibold">Сейчас расширяю знания в:</p>
+                <ul class="space-y-2">
+                  <li class="flex items-center gap-2">
+                    <span class="text-accent">▸</span>
+                    C#
+                  </li>
+                  <li class="flex items-center gap-2">
+                    <span class="text-accent">▸</span>
+                    Инжиниринг баз данных
+                  </li>
+                  <li class="flex items-center gap-2">
+                    <span class="text-accent">▸</span>
+                    Проектирование приложений
+                  </li>
+                  <li class="flex items-center gap-2">
+                    <span class="text-accent">▸</span>
+                    Решение реальных задач в разработке
+                  </li>
+                </ul>
+              </div>
+            </Card>
+          </div>
+        </div>
+
+        <!-- Interests -->
+        <div class="mb-12">
+          <Card>
+            <h2 class="text-2xl font-bold text-white mb-4">Помимо технологий</h2>
+            <div class="space-y-4 text-dark-text">
+              <p>
+                Помимо технической работы, меня глубоко интересуют психология и философия — особенно то, как люди мыслят, принимают решения и взаимодействуют со сложными системами.
+              </p>
+              <p>
+                Эти взгляды усиливают мой аналитический подход к инженерии и помогают проектировать технологии с большим осознанием человеческих факторов.
+              </p>
+              <p>
+                Музыка — ещё один важный творческий выход. Играю на акустических барабанах и занимаюсь электронным звуковым дизайном. Это даёт другой режим распознавания паттернов, дополняющий техническое мышление.
+              </p>
+            </div>
+          </Card>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer locale="ru" />
+</Layout>

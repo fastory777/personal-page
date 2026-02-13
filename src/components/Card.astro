@@ -1,0 +1,23 @@
+---
+interface Props {
+  href?: string;
+  class?: string;
+}
+
+const { href, class: className = '' } = Astro.props;
+const isLink = !!href;
+
+const baseClasses = 'bg-dark-surface border border-dark-border rounded-xl p-6 transition-all duration-200 hover:border-accent/50';
+---
+
+{
+  isLink ? (
+    <a href={href} class={`block ${baseClasses} hover:scale-105 ${className}`}>
+      <slot />
+    </a>
+  ) : (
+    <div class={`${baseClasses} ${className}`}>
+      <slot />
+    </div>
+  )
+}

@@ -1,0 +1,189 @@
+---
+import Layout from '../../components/Layout.astro';
+import Navbar from '../../components/Navbar.astro';
+import Footer from '../../components/Footer.astro';
+import Card from '../../components/Card.astro';
+import Button from '../../components/Button.astro';
+import { projects } from '../../data/projects.en';
+
+const featuredProjects = projects.filter(p => p.featured);
+---
+
+<Layout
+  title="Home"
+  description="Arseniy Domanov - IT student in Norway focused on engineering, systems, and security"
+  locale="en"
+>
+  <Navbar locale="en" currentPath="" />
+
+  <main class="min-h-screen flex flex-col">
+    <!-- Hero Section -->
+    <section class="section-container">
+      <div class="max-w-4xl mx-auto text-center">
+        <h1 class="text-5xl md:text-7xl font-extrabold text-white mb-6 leading-tight">
+          Arseniy Domanov
+        </h1>
+        <p class="text-xl md:text-2xl text-dark-muted mb-8">
+          19-year-old IT student based in Norway, focused on programming and building practical software.
+          Currently balancing education with real-world experience at a software development company while exploring different areas of technology through hands-on projects.
+        </p>
+        <p class="text-lg text-dark-muted mb-8">
+          My current priority is successfully finishing my education while continuing to grow as a developer in a professional environment.
+        </p>
+        <div class="flex flex-wrap gap-4 justify-center">
+          <Button href="/en/projects" variant="primary">
+            View Projects
+          </Button>
+          <Button href="/en/about" variant="secondary">
+            About me →
+          </Button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Navigation Cards - Most Important! -->
+    <section class="section-container">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Projects -->
+        <Card href="/en/projects" class="md:col-span-2 lg:col-span-1">
+          <div class="flex items-start justify-between mb-4">
+            <div class="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center">
+              <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"></path>
+              </svg>
+            </div>
+            <span class="text-dark-muted">→</span>
+          </div>
+          <h3 class="text-xl font-bold text-white mb-2">Projects</h3>
+          <p class="text-sm text-dark-muted">Technical projects and experiments in web development, security, and automation</p>
+        </Card>
+
+        <!-- Portfolio -->
+        <Card href="https://portfolio.fastory.me">
+          <div class="flex items-start justify-between mb-4">
+            <div class="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center">
+              <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+              </svg>
+            </div>
+            <span class="text-dark-muted">↗</span>
+          </div>
+          <h3 class="text-xl font-bold text-white mb-2">Practice Logs / School Work</h3>
+          <p class="text-sm text-dark-muted">Practice logs and documentation of learning progress</p>
+        </Card>
+
+        <!-- Notes -->
+        <Card href="https://notes.fastory.me">
+          <div class="flex items-start justify-between mb-4">
+            <div class="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center">
+              <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+              </svg>
+            </div>
+            <span class="text-dark-muted">↗</span>
+          </div>
+          <h3 class="text-xl font-bold text-white mb-2">Notes</h3>
+          <p class="text-sm text-dark-muted">Notes, insights, and knowledge library</p>
+        </Card>
+
+        <!-- Links -->
+        <Card href="https://links.fastory.me">
+          <div class="flex items-start justify-between mb-4">
+            <div class="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center">
+              <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"></path>
+              </svg>
+            </div>
+            <span class="text-dark-muted">↗</span>
+          </div>
+          <h3 class="text-xl font-bold text-white mb-2">Linktree</h3>
+        </Card>
+
+        <!-- Contact -->
+        <Card href="/en/contact" class="md:col-span-2">
+          <div class="flex items-start justify-between mb-4">
+            <div class="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center">
+              <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+              </svg>
+            </div>
+            <span class="text-dark-muted">→</span>
+          </div>
+          <h3 class="text-xl font-bold text-white mb-2">Contact</h3>
+          <p class="text-sm text-dark-muted">Get in touch for collaboration or technical projects</p>
+        </Card>
+      </div>
+    </section>
+
+    <!-- Highlights Section -->
+    <section class="section-container">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-3xl font-bold text-white mb-8 text-center">Areas of Focus</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class="flex items-start gap-3">
+            <span class="text-accent">▸</span>
+            <p class="text-dark-text">Web development and modern application architecture</p>
+          </div>
+          <div class="flex items-start gap-3">
+            <span class="text-accent">▸</span>
+            <p class="text-dark-text">Building useful, real-world software projects</p>
+          </div>
+          <div class="flex items-start gap-3">
+            <span class="text-accent">▸</span>
+            <p class="text-dark-text">Automation and improving workflows</p>
+          </div>
+          <div class="flex items-start gap-3">
+            <span class="text-accent">▸</span>
+            <p class="text-dark-text">Continuous growth while completing my IT education</p>
+          </div>
+          <div class="flex items-start gap-3">
+            <span class="text-accent">▸</span>
+            <p class="text-dark-text">Professional development through hands-on industry experience</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Projects -->
+    <section class="section-container">
+      <div class="max-w-6xl mx-auto">
+        <h2 class="text-3xl font-bold text-white mb-8">Featured Projects</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {featuredProjects.map(project => (
+            <Card>
+              <h3 class="text-lg font-bold text-white mb-2">{project.title}</h3>
+              <p class="text-sm text-dark-muted mb-4">{project.description}</p>
+              <div class="flex flex-wrap gap-2 mb-4">
+                {project.tags.map(tag => (
+                  <span class="px-3 py-1 text-xs bg-accent/10 text-accent rounded-full">{tag}</span>
+                ))}
+              </div>
+              <div class="flex items-center justify-between">
+                <span class={`text-xs px-3 py-1 rounded-full ${
+                  project.status === 'Active' ? 'bg-green-500/10 text-green-400' :
+                  project.status === 'In Progress' ? 'bg-blue-500/10 text-blue-400' :
+                  project.status === 'Completed' ? 'bg-purple-500/10 text-purple-400' :
+                  'bg-gray-500/10 text-gray-400'
+                }`}>
+                  {project.status}
+                </span>
+                {project.link && (
+                  <a href={project.link} class="text-sm text-accent hover:text-accent-light">
+                    View →
+                  </a>
+                )}
+              </div>
+            </Card>
+          ))}
+        </div>
+        <div class="mt-8 text-center">
+          <Button href="/en/projects" variant="secondary">
+            View All Projects
+          </Button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer locale="en" />
+</Layout>

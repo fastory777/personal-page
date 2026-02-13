@@ -1,0 +1,185 @@
+---
+import Layout from '../../components/Layout.astro';
+import Navbar from '../../components/Navbar.astro';
+import Footer from '../../components/Footer.astro';
+import Card from '../../components/Card.astro';
+---
+
+<Layout
+  title="About"
+  description="Background, technical skills, and areas of interest"
+  locale="en"
+>
+  <Navbar locale="en" currentPath="about" />
+
+  <main class="min-h-screen">
+    <section class="section-container">
+      <div class="max-w-4xl mx-auto">
+        <h1 class="text-4xl md:text-5xl font-extrabold text-white mb-8">About Me</h1>
+
+        <!-- Bio -->
+        <div class="mb-12">
+          <Card>
+            <h2 class="text-2xl font-bold text-white mb-4">Background</h2>
+            <div class="space-y-4 text-dark-text">
+              <p>
+                Originally from Ukraine, now living in Norway and pursuing an IT education while working in a software development environment.
+              </p>
+              <p>
+                My primary focus is programming and building practical systems that solve real problems. I value hands-on experience and prefer learning through implementation rather than theory alone.
+              </p>
+            </div>
+          </Card>
+        </div>
+
+        <!-- Technical Stack -->
+        <div class="mb-12">
+          <h2 class="text-2xl font-bold text-white mb-6">Technical Stack</h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <Card>
+              <h3 class="text-lg font-semibold text-white mb-4">Languages & Frameworks</h3>
+              <ul class="space-y-2 text-sm text-dark-text">
+                <li class="flex items-center gap-2">
+                  <span class="text-accent">▸</span>
+                  JavaScript / TypeScript
+                </li>
+                <li class="flex items-center gap-2">
+                  <span class="text-accent">▸</span>
+                  Python
+                </li>
+                <li class="flex items-center gap-2">
+                  <span class="text-accent">▸</span>
+                  HTML / CSS
+                </li>
+                <li class="flex items-center gap-2">
+                  <span class="text-accent">▸</span>
+                  React
+                </li>
+                <li class="flex items-center gap-2">
+                  <span class="text-accent">▸</span>
+                  Vue 3
+                </li>
+                <li class="flex items-center gap-2">
+                  <span class="text-accent">▸</span>
+                  PHP
+                </li>
+                <li class="flex items-center gap-2">
+                  <span class="text-accent">▸</span>
+                  Laravel
+                </li>
+                <li class="flex items-center gap-2">
+                  <span class="text-accent">▸</span>
+                  NestJS
+                </li>
+                <li class="flex items-center gap-2">
+                  <span class="text-accent">▸</span>
+                  Node.js
+                </li>
+                <li class="flex items-center gap-2">
+                  <span class="text-accent">▸</span>
+                  SQL
+                </li>
+              </ul>
+            </Card>
+
+            <Card>
+              <h3 class="text-lg font-semibold text-white mb-4">Tools & Technologies</h3>
+              <ul class="space-y-2 text-sm text-dark-text">
+                <li class="flex items-center gap-2">
+                  <span class="text-accent">▸</span>
+                  Git / GitHub
+                </li>
+                <li class="flex items-center gap-2">
+                  <span class="text-accent">▸</span>
+                  PowerShell & Bash
+                </li>
+                <li class="flex items-center gap-2">
+                  <span class="text-accent">▸</span>
+                  Windows Server
+                </li>
+                <li class="flex items-center gap-2">
+                  <span class="text-accent">▸</span>
+                  Active Directory
+                </li>
+                <li class="flex items-center gap-2">
+                  <span class="text-accent">▸</span>
+                  Linux fundamentals
+                </li>
+                <li class="flex items-center gap-2">
+                  <span class="text-accent">▸</span>
+                  AI integration for productivity and development workflows
+                </li>
+              </ul>
+            </Card>
+
+            <Card>
+              <h3 class="text-lg font-semibold text-white mb-4">Areas of Practice</h3>
+              <ul class="space-y-2 text-sm text-dark-text">
+                <li class="flex items-center gap-2">
+                  <span class="text-accent">▸</span>
+                  Web development
+                </li>
+                <li class="flex items-center gap-2">
+                  <span class="text-accent">▸</span>
+                  Automation scripting
+                </li>
+                <li class="flex items-center gap-2">
+                  <span class="text-accent">▸</span>
+                  Server environments and Active Directory
+                </li>
+              </ul>
+            </Card>
+
+            <Card>
+              <h3 class="text-lg font-semibold text-white mb-4">Currently Learning</h3>
+              <div class="space-y-4 text-sm text-dark-text">
+                <p>
+                  Everything listed above is part of an ongoing learning process — I don't position myself as a master, but as someone committed to continuous growth.
+                </p>
+                <p class="font-semibold">Currently expanding my knowledge in:</p>
+                <ul class="space-y-2">
+                  <li class="flex items-center gap-2">
+                    <span class="text-accent">▸</span>
+                    C#
+                  </li>
+                  <li class="flex items-center gap-2">
+                    <span class="text-accent">▸</span>
+                    Database engineering
+                  </li>
+                  <li class="flex items-center gap-2">
+                    <span class="text-accent">▸</span>
+                    Application design
+                  </li>
+                  <li class="flex items-center gap-2">
+                    <span class="text-accent">▸</span>
+                    Solving real-world development challenges
+                  </li>
+                </ul>
+              </div>
+            </Card>
+          </div>
+        </div>
+
+        <!-- Interests -->
+        <div class="mb-12">
+          <Card>
+            <h2 class="text-2xl font-bold text-white mb-4">Beyond Technology</h2>
+            <div class="space-y-4 text-dark-text">
+              <p>
+                Beyond technical work, I'm deeply interested in psychology and philosophy, particularly in how people think, make decisions, and interact with complex systems.
+              </p>
+              <p>
+                These perspectives strengthen my analytical approach to engineering and help me design technology with greater awareness of human factors.
+              </p>
+              <p>
+                Music is another important creative outlet — I play acoustic drums and explore electronic sound design. It offers a different mode of pattern recognition that complements my technical mindset.
+              </p>
+            </div>
+          </Card>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer locale="en" />
+</Layout>

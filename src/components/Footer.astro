@@ -1,0 +1,101 @@
+---
+interface Props {
+  locale: 'en' | 'ru';
+}
+
+const { locale } = Astro.props;
+
+const footer = {
+  en: {
+    subdomains: 'Quick Links',
+    portfolio: 'Portfolio',
+    notes: 'Notes',
+    links: 'Links',
+    connect: 'Connect',
+    copyright: '© 2026 Arseniy Domanov. All rights reserved.',
+  },
+  ru: {
+    subdomains: 'Быстрые ссылки',
+    portfolio: 'Портфолио',
+    notes: 'Заметки',
+    links: 'Ссылки',
+    connect: 'Связаться',
+    copyright: '© 2026 Арсений Доманов. Все права защищены.',
+  },
+};
+
+const t = footer[locale];
+---
+
+<footer class="border-t border-dark-border bg-dark-surface/50 mt-auto">
+  <div class="max-w-6xl mx-auto px-4 py-12">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <!-- Subdomains -->
+      <div>
+        <h3 class="text-sm font-semibold text-white mb-4">{t.subdomains}</h3>
+        <ul class="space-y-2">
+          <li>
+            <a href="https://portfolio.fastory.me" target="_blank" rel="noopener noreferrer" class="text-sm text-dark-muted hover:text-accent transition-colors">
+              {t.portfolio} ↗
+            </a>
+          </li>
+          <li>
+            <a href="https://notes.fastory.me" target="_blank" rel="noopener noreferrer" class="text-sm text-dark-muted hover:text-accent transition-colors">
+              {t.notes} ↗
+            </a>
+          </li>
+          <li>
+            <a href="https://links.fastory.me" target="_blank" rel="noopener noreferrer" class="text-sm text-dark-muted hover:text-accent transition-colors">
+              {t.links} ↗
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Social Links -->
+      <div>
+        <h3 class="text-sm font-semibold text-white mb-4">{t.connect}</h3>
+        <ul class="space-y-2">
+          <li>
+            <a href="mailto:prog@fastory.me" class="text-sm text-dark-muted hover:text-accent transition-colors">
+              Email
+            </a>
+          </li>
+          <li>
+            <a href="https://github.com/fastory777" target="_blank" rel="noopener noreferrer" class="text-sm text-dark-muted hover:text-accent transition-colors">
+              GitHub ↗
+            </a>
+          </li>
+          <li>
+            <a href="https://t.me/fastory7" target="_blank" rel="noopener noreferrer" class="text-sm text-dark-muted hover:text-accent transition-colors">
+              Telegram ↗
+            </a>
+          </li>
+          <li>
+            <a href="https://www.instagram.com/arseniydomanov" target="_blank" rel="noopener noreferrer" class="text-sm text-dark-muted hover:text-accent transition-colors">
+              Instagram ↗
+            </a>
+          </li>
+          <li>
+            <a href="https://discordapp.com/users/fastory" target="_blank" rel="noopener noreferrer" class="text-sm text-dark-muted hover:text-accent transition-colors">
+              Discord ↗
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Branding -->
+      <div>
+        <div class="text-4xl text-white mb-2" style="font-family: 'Yellowtail', cursive;">Fastory</div>
+        <p class="text-sm text-dark-muted">
+          {locale === 'en' ? 'Building digital experiences' : 'Создаю цифровые продукты'}
+        </p>
+      </div>
+    </div>
+
+    <!-- Copyright -->
+    <div class="mt-8 pt-8 border-t border-dark-border text-center">
+      <p class="text-xs text-dark-muted">{t.copyright}</p>
+    </div>
+  </div>
+</footer>

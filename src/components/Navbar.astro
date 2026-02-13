@@ -1,0 +1,109 @@
+---
+import LangSwitch from './LangSwitch.astro';
+
+interface Props {
+  locale: 'en' | 'ru';
+  currentPath?: string;
+}
+
+const { locale, currentPath = '' } = Astro.props;
+
+const nav = {
+  en: {
+    home: 'Home',
+    projects: 'Projects',
+    about: 'About',
+    contact: 'Contact',
+  },
+  ru: {
+    home: 'Главная',
+    projects: 'Проекты',
+    about: 'Обо мне',
+    contact: 'Контакты',
+  },
+};
+
+const t = nav[locale];
+---
+
+<nav class="fixed top-0 left-0 right-0 z-50 bg-dark-bg/80 backdrop-blur-lg border-b border-dark-border">
+  <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
+    <!-- Logo/Wordmark -->
+    <a href={`/${locale}`} class="text-4xl text-white hover:text-accent transition-colors" style="font-family: 'Yellowtail', cursive;">
+      Fastory
+    </a>
+
+    <!-- Desktop Navigation -->
+    <div class="hidden md:flex items-center gap-8">
+      <a
+        href={`/${locale}`}
+        class={`text-sm font-medium hover:text-accent transition-colors ${currentPath === '' ? 'text-accent' : 'text-dark-text'}`}
+      >
+        {t.home}
+      </a>
+      <a
+        href={`/${locale}/projects`}
+        class={`text-sm font-medium hover:text-accent transition-colors ${currentPath === 'projects' ? 'text-accent' : 'text-dark-text'}`}
+      >
+        {t.projects}
+      </a>
+      <a
+        href={`/${locale}/about`}
+        class={`text-sm font-medium hover:text-accent transition-colors ${currentPath === 'about' ? 'text-accent' : 'text-dark-text'}`}
+      >
+        {t.about}
+      </a>
+      <a
+        href={`/${locale}/contact`}
+        class={`text-sm font-medium hover:text-accent transition-colors ${currentPath === 'contact' ? 'text-accent' : 'text-dark-text'}`}
+      >
+        {t.contact}
+      </a>
+
+      <LangSwitch locale={locale} />
+    </div>
+
+    <!-- Mobile Menu Button & Lang Switch -->
+    <div class="md:hidden flex items-center gap-4">
+      <LangSwitch locale={locale} />
+      <button id="mobile-menu-btn" class="text-dark-text hover:text-accent transition-colors">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="hidden md:hidden border-t border-dark-border bg-dark-surface/95 backdrop-blur-lg">
+    <div class="px-4 py-4 space-y-3">
+      <a href={`/${locale}`} class="block text-sm font-medium hover:text-accent transition-colors">
+        {t.home}
+      </a>
+      <a href={`/${locale}/projects`} class="block text-sm font-medium hover:text-accent transition-colors">
+        {t.projects}
+      </a>
+      <a href={`/${locale}/about`} class="block text-sm font-medium hover:text-accent transition-colors">
+        {t.about}
+      </a>
+      <a href={`/${locale}/contact`} class="block text-sm font-medium hover:text-accent transition-colors">
+        {t.contact}
+      </a>
+    </div>
+  </div>
+</nav>
+
+<!-- Spacer to prevent content from hiding behind fixed navbar -->
+<div class="h-16"></div>
+
+<script>
+  // Mobile menu toggle
+  const menuBtn = document.getElementById('mobile-menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+
+  if (menuBtn && mobileMenu) {
+    menuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+  }
+</script>
