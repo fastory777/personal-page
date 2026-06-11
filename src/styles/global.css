@@ -1,8 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Yellowtail&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap');
 
 @layer base {
   * {
@@ -16,6 +16,7 @@
   body {
     @apply bg-dark-bg text-dark-text antialiased;
     font-family: 'Inter', system-ui, sans-serif;
+    min-height: 100vh;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -26,9 +27,13 @@
     @apply transition-colors duration-200;
   }
 
-  /* Custom scrollbar */
+  ::selection {
+    @apply bg-accent/20 text-white;
+  }
+
   ::-webkit-scrollbar {
     width: 10px;
+    height: 10px;
   }
 
   ::-webkit-scrollbar-track {
@@ -47,5 +52,47 @@
 @layer components {
   .section-container {
     @apply max-w-6xl mx-auto px-4 py-16 md:py-24;
+  }
+
+  .surface-card {
+    @apply rounded-xl border border-dark-border bg-dark-surface shadow-glow;
+  }
+
+  .surface-card-hover {
+    @apply transition-all duration-200 hover:border-accent/50 hover:bg-dark-elevated;
+  }
+
+  .eyebrow {
+    @apply text-sm font-semibold uppercase text-accent;
+  }
+
+  .pill {
+    @apply inline-flex items-center rounded-full border border-dark-border bg-dark-bg px-3 py-1 text-xs text-dark-muted;
+  }
+
+  .icon-box {
+    @apply flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-accent/10 text-accent;
+  }
+
+  .hero-net-fallback {
+    background:
+      radial-gradient(circle at 15% 15%, rgba(6, 182, 212, 0.18), transparent 30%),
+      radial-gradient(circle at 82% 28%, rgba(34, 211, 238, 0.12), transparent 28%),
+      linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+      #0a0a0a;
+    background-size: auto, auto, 44px 44px, 44px 44px, auto;
+  }
+
+  .section-heading {
+    @apply mb-8 flex flex-col gap-3 md:mb-10;
+  }
+
+  .section-heading h2 {
+    @apply text-3xl font-extrabold text-white md:text-4xl;
+  }
+
+  .section-heading p {
+    @apply max-w-3xl text-base leading-7 text-dark-muted md:text-lg;
   }
 }

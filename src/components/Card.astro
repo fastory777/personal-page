@@ -7,12 +7,12 @@ interface Props {
 const { href, class: className = '' } = Astro.props;
 const isLink = !!href;
 
-const baseClasses = 'bg-dark-surface border border-dark-border rounded-xl p-6 transition-all duration-200 hover:border-accent/50';
+const baseClasses = 'surface-card p-6';
 ---
 
 {
   isLink ? (
-    <a href={href} class={`block ${baseClasses} hover:scale-105 ${className}`}>
+    <a href={href} class={`block ${baseClasses} surface-card-hover ${className}`}>
       <slot />
     </a>
   ) : (

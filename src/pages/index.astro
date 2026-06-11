@@ -1,0 +1,25 @@
+---
+const defaultLocale = 'en';
+---
+
+<!doctype html>
+<html lang={defaultLocale}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex" />
+    <title>FASTORY</title>
+    <link rel="canonical" href="https://fastory.me/en" />
+    <script is:inline>
+      const storedLocale = localStorage.getItem('preferred-locale');
+      const browserLocale = navigator.language?.toLowerCase().startsWith('ru') ? 'ru' : 'en';
+      const targetLocale = storedLocale === 'ru' || storedLocale === 'en' ? storedLocale : browserLocale;
+      window.location.replace(`/${targetLocale}`);
+    </script>
+  </head>
+  <body>
+    <p>
+      Redirecting to <a href="/en">fastory.me/en</a>
+    </p>
+  </body>
+</html>

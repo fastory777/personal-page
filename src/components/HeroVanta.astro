@@ -1,0 +1,95 @@
+---
+import Button from './Button.astro';
+
+interface Props {
+  locale: 'en' | 'ru';
+}
+
+const { locale } = Astro.props;
+
+const hero = {
+  en: {
+    eyebrow: 'Arsenii Domanov',
+    title: 'Projects, notes, and personal software',
+    lead: 'A place where I document what I build and what I learn.',
+    primary: 'View projects',
+    secondary: 'About me',
+  },
+  ru: {
+    eyebrow: 'Арсений Доманов',
+    title: 'Проекты, заметки и личные разработки',
+    lead: 'Место для проектов, идей, заметок и экспериментов.',
+    primary: 'Посмотреть проекты',
+    secondary: 'Обо мне',
+  },
+};
+
+const t = hero[locale];
+---
+
+<section id="hero-vanta" class="hero-net-fallback relative overflow-hidden border-b border-dark-border/60">
+  <div class="pointer-events-none absolute inset-0 z-[1] bg-dark-bg/45"></div>
+
+  <div class="mx-auto max-w-6xl px-4 py-28 md:py-36 lg:py-40 relative z-10">
+    <div class="mx-auto max-w-4xl text-center">
+      <h1 class="mb-6 text-5xl font-extrabold leading-tight text-white md:text-7xl">
+        {t.title}
+      </h1>
+      <p class="mx-auto mb-8 max-w-3xl text-xl text-dark-text md:text-2xl">
+        {t.lead}
+      </p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <Button href={`/${locale}/projects`} variant="primary">
+          {t.primary}
+        </Button>
+        <Button href={`/${locale}/about`} variant="secondary">
+          {t.secondary} ->
+        </Button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script is:inline src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+<script is:inline src="https://cdn.jsdelivr.net/npm/vanta@0.5.24/dist/vanta.net.min.js"></script>
+<script is:inline>
+  const vantaWindow = window;
+  let vantaEffect = null;
+  let vantaLoadAttempts = 0;
+
+  function initHeroVanta() {
+    const element = document.getElementById('hero-vanta');
+
+    if (!element || vantaEffect) {
+      return;
+    }
+
+    if (!vantaWindow.VANTA?.NET) {
+      if (vantaLoadAttempts < 40) {
+        vantaLoadAttempts++;
+        window.setTimeout(initHeroVanta, 100);
+      }
+      return;
+    }
+
+    vantaEffect = vantaWindow.VANTA.NET({
+      el: element,
+      mouseControls: true,
+      touchControls: true,
+      gyroControls: false,
+      minHeight: 200.0,
+      minWidth: 200.0,
+      scale: 1.0,
+      scaleMobile: 1.0,
+      color: 0x06b6d4,
+      backgroundColor: 0x0a0a0a,
+      points: 10.0,
+      maxDistance: 22.0,
+      spacing: 18.0,
+    });
+  }
+
+  window.addEventListener('load', initHeroVanta);
+  document.addEventListener('astro:page-load', initHeroVanta);
+  initHeroVanta();
+</script>

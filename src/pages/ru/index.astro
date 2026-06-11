@@ -4,182 +4,151 @@ import Navbar from '../../components/Navbar.astro';
 import Footer from '../../components/Footer.astro';
 import Card from '../../components/Card.astro';
 import Button from '../../components/Button.astro';
+import HeroVanta from '../../components/HeroVanta.astro';
 import { projects } from '../../data/projects.ru';
 
 const featuredProjects = projects.filter(p => p.featured);
+const focusItems = [
+  'Веб-разработка и современная архитектура приложений',
+  'Создание полезных программных проектов',
+  'Автоматизация и улучшение рабочих процессов',
+  'Постоянный рост во время завершения IT-образования',
+  'Профессиональное развитие через практический опыт в индустрии',
+];
+const exploreItems = [
+  {
+    title: 'Заметки',
+    description: 'Идеи, наблюдения и технические заметки.',
+    href: 'https://notes.fastory.me',
+    icon: 'notes',
+  },
+  {
+    title: 'Учебный журнал',
+    description: 'Учебные работы, журналы практики и прогресс со временем.',
+    href: 'https://portfolio.fastory.me',
+    icon: 'journal',
+  },
+  {
+    title: 'Ссылки',
+    description: 'Подборка моих публичных ссылок и профилей.',
+    href: 'https://links.fastory.me',
+    icon: 'links',
+  },
+];
 ---
 
 <Layout
   title="Главная"
-  description="Арсений Доманов - IT-студент в Норвегии, интересующийся инженерией, системами и безопасностью"
+  description="Арсений Доманов - IT-студент и разработчик в Норвегии"
   locale="ru"
 >
   <Navbar locale="ru" currentPath="" />
 
   <main class="min-h-screen flex flex-col">
-    <!-- Hero Section -->
-    <section class="section-container">
-      <div class="max-w-4xl mx-auto text-center">
-        <h1 class="text-5xl md:text-7xl font-extrabold text-white mb-6 leading-tight">
-          Арсений Доманов
-        </h1>
-        <p class="text-xl md:text-2xl text-dark-muted mb-8">
-          19-летний IT-студент в Норвегии, сфокусированный на программировании и создании практичного ПО.
-          Совмещаю учёбу с работой в компании-разработчике ПО, изучая различные области технологий через практические проекты.
-        </p>
-        <p class="text-lg text-dark-muted mb-8">
-          Мой текущий приоритет — успешно завершить образование и продолжать расти как разработчик в профессиональной среде.
-        </p>
-        <div class="flex flex-wrap gap-4 justify-center">
-          <Button href="/ru/projects" variant="primary">
-            Посмотреть проекты
-          </Button>
-          <Button href="/ru/about" variant="secondary">
-            Обо мне →
-          </Button>
-        </div>
+    <HeroVanta locale="ru" />
+
+    <section class="section-container pt-12 pb-10 md:pt-14 md:pb-12">
+      <div class="section-heading">
+        <h2>Избранные проекты</h2>
+      </div>
+
+      <div class="grid grid-cols-1 gap-6 md:grid-cols-3">
+        {featuredProjects.map(project => (
+          <Card>
+            <h3 class="mb-2 text-lg font-bold text-white">{project.title}</h3>
+            <p class="mb-4 text-sm leading-6 text-dark-muted">{project.description}</p>
+            <div class="mb-4 flex flex-wrap gap-2">
+              {project.tags.map(tag => (
+                <span class="pill">{tag}</span>
+              ))}
+            </div>
+            <div class="flex items-center justify-between">
+              <span class={`rounded-full px-3 py-1 text-xs ${
+                project.status === 'Active' ? 'bg-green-500/10 text-green-400' :
+                project.status === 'In Progress' ? 'bg-blue-500/10 text-blue-400' :
+                project.status === 'Completed' ? 'bg-purple-500/10 text-purple-400' :
+                'bg-gray-500/10 text-gray-400'
+              }`}>
+                {project.status}
+              </span>
+              {project.link && (
+                <a href={project.link} class="text-sm text-accent hover:text-accent-light">
+                  Посмотреть ->
+                </a>
+              )}
+            </div>
+          </Card>
+        ))}
+      </div>
+
+      <div class="mt-8 text-center">
+        <Button href="/ru/projects" variant="secondary">
+          Все проекты
+        </Button>
       </div>
     </section>
 
-    <!-- Navigation Cards - Most Important! -->
-    <section class="section-container">
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <!-- Projects -->
-        <Card href="/ru/projects" class="md:col-span-2 lg:col-span-1">
-          <div class="flex items-start justify-between mb-4">
-            <div class="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center">
-              <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"></path>
-              </svg>
-            </div>
-            <span class="text-dark-muted">→</span>
-          </div>
-          <h3 class="text-xl font-bold text-white mb-2">Проекты</h3>
-          <p class="text-sm text-dark-muted">Технические проекты и эксперименты в веб-разработке, безопасности и автоматизации</p>
-        </Card>
-
-        <!-- Portfolio -->
-        <Card href="https://portfolio.fastory.me">
-          <div class="flex items-start justify-between mb-4">
-            <div class="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center">
-              <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
-              </svg>
-            </div>
-            <span class="text-dark-muted">↗</span>
-          </div>
-          <h3 class="text-xl font-bold text-white mb-2">Журналы практики / Учебные работы</h3>
-          <p class="text-sm text-dark-muted">Журналы практики и документация учебного процесса</p>
-        </Card>
-
-        <!-- Notes -->
-        <Card href="https://notes.fastory.me">
-          <div class="flex items-start justify-between mb-4">
-            <div class="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center">
-              <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
-              </svg>
-            </div>
-            <span class="text-dark-muted">↗</span>
-          </div>
-          <h3 class="text-xl font-bold text-white mb-2">Заметки</h3>
-          <p class="text-sm text-dark-muted">Заметки, идеи и библиотека знаний</p>
-        </Card>
-
-        <!-- Links -->
-        <Card href="https://links.fastory.me">
-          <div class="flex items-start justify-between mb-4">
-            <div class="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center">
-              <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"></path>
-              </svg>
-            </div>
-            <span class="text-dark-muted">↗</span>
-          </div>
-          <h3 class="text-xl font-bold text-white mb-2">Ссылки</h3>
-          <p class="text-sm text-dark-muted">Способы связаться со мной</p>
-        </Card>
-
-        <!-- Contact -->
-        <Card href="/ru/contact" class="md:col-span-2">
-          <div class="flex items-start justify-between mb-4">
-            <div class="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center">
-              <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
-              </svg>
-            </div>
-            <span class="text-dark-muted">→</span>
-          </div>
-          <h3 class="text-xl font-bold text-white mb-2">Контакты</h3>
-          <p class="text-sm text-dark-muted">Свяжитесь для сотрудничества или технических проектов</p>
-        </Card>
+    <section class="section-container py-10 md:py-12">
+      <div class="section-heading">
+        <h2>Разделы сайта</h2>
+        <p>Другие части сайта, которые стоит посмотреть.</p>
       </div>
-    </section>
 
-    <!-- Highlights Section -->
-    <section class="section-container">
-      <div class="max-w-4xl mx-auto">
-        <h2 class="text-3xl font-bold text-white mb-8 text-center">Области фокуса</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div class="flex items-start gap-3">
-            <span class="text-accent">▸</span>
-            <p class="text-dark-text">Веб-разработка и современная архитектура приложений</p>
-          </div>
-          <div class="flex items-start gap-3">
-            <span class="text-accent">▸</span>
-            <p class="text-dark-text">Создание полезного ПО для реальных задач</p>
-          </div>
-          <div class="flex items-start gap-3">
-            <span class="text-accent">▸</span>
-            <p class="text-dark-text">Автоматизация и улучшение рабочих процессов</p>
-          </div>
-          <div class="flex items-start gap-3">
-            <span class="text-accent">▸</span>
-            <p class="text-dark-text">Непрерывный рост в процессе завершения IT-образования</p>
-          </div>
-          <div class="flex items-start gap-3">
-            <span class="text-accent">▸</span>
-            <p class="text-dark-text">Профессиональное развитие через практический опыт в индустрии</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Featured Projects -->
-    <section class="section-container">
-      <div class="max-w-6xl mx-auto">
-        <h2 class="text-3xl font-bold text-white mb-8">Избранные проекты</h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {featuredProjects.map(project => (
-            <Card>
-              <h3 class="text-lg font-bold text-white mb-2">{project.title}</h3>
-              <p class="text-sm text-dark-muted mb-4">{project.description}</p>
-              <div class="flex flex-wrap gap-2 mb-4">
-                {project.tags.map(tag => (
-                  <span class="px-3 py-1 text-xs bg-accent/10 text-accent rounded-full">{tag}</span>
-                ))}
-              </div>
-              <div class="flex items-center justify-between">
-                <span class={`text-xs px-3 py-1 rounded-full ${
-                  project.status === 'Active' ? 'bg-green-500/10 text-green-400' :
-                  project.status === 'In Progress' ? 'bg-blue-500/10 text-blue-400' :
-                  project.status === 'Completed' ? 'bg-purple-500/10 text-purple-400' :
-                  'bg-gray-500/10 text-gray-400'
-                }`}>
-                  {project.status}
-                </span>
-                {project.link && (
-                  <a href={project.link} class="text-sm text-accent hover:text-accent-light">
-                    Посмотреть →
-                  </a>
+      <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {exploreItems.map(item => (
+          <Card href={item.href}>
+            <div class="mb-4 flex items-start justify-between">
+              <div class="icon-box">
+                {item.icon === 'notes' && (
+                  <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                  </svg>
+                )}
+                {item.icon === 'journal' && (
+                  <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                  </svg>
+                )}
+                {item.icon === 'links' && (
+                  <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"></path>
+                  </svg>
                 )}
               </div>
-            </Card>
-          ))}
-        </div>
-        <div class="mt-8 text-center">
-          <Button href="/ru/projects" variant="secondary">
-            Все проекты
+              <span class="text-sm text-dark-muted">-></span>
+            </div>
+            <h3 class="mb-2 text-xl font-bold text-white">{item.title}</h3>
+            <p class="text-sm leading-6 text-dark-muted">{item.description}</p>
+          </Card>
+        ))}
+      </div>
+    </section>
+
+    <section class="section-container py-10 md:py-12">
+      <div class="section-heading">
+        <h2>Области фокуса</h2>
+        <p>Что мне интересно</p>
+      </div>
+
+      <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
+        {focusItems.map(item => (
+          <div class="surface-card flex items-center gap-3 p-5">
+            <span class="flex h-5 w-5 shrink-0 items-center justify-center leading-none text-accent">▸</span>
+            <p class="leading-6 text-dark-text">{item}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section class="section-container py-10 md:py-12">
+      <div class="surface-card p-6 md:p-8">
+        <div class="max-w-3xl">
+          <h2 class="mb-4 text-3xl font-extrabold text-white md:text-4xl">Обо мне</h2>
+          <p class="mb-6 text-lg leading-8 text-dark-muted">
+            Я IT-студент и разработчик в Норвегии, сфокусированный на веб-разработке, практичных программных проектах и обучении через реальную работу.
+          </p>
+          <Button href="/ru/about" variant="secondary">
+            Подробнее
           </Button>
         </div>
       </div>

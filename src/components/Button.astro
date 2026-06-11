@@ -9,11 +9,11 @@ const { href, variant = 'primary', class: className = '' } = Astro.props;
 
 const variantClasses = {
   primary: 'bg-accent text-white hover:bg-accent-light',
-  secondary: 'bg-dark-surface text-dark-text border border-dark-border hover:border-accent',
+  secondary: 'bg-dark-surface text-dark-text border border-dark-border hover:border-accent hover:text-accent',
   ghost: 'text-dark-text hover:text-accent',
 };
 
-const baseClasses = 'inline-flex items-center justify-center px-6 py-3 rounded-lg font-semibold text-sm transition-all duration-200';
+const baseClasses = 'inline-flex items-center justify-center rounded-lg px-6 py-3 text-sm font-semibold transition-all duration-200';
 const classes = `${baseClasses} ${variantClasses[variant]} ${className}`;
 ---
 
